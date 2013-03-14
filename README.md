@@ -1,6 +1,6 @@
 <b>一、系统环境：</b>
 
-安卓各个版本SDK,并将SDK配置到PATH中
+1.1 安卓各个版本SDK,并将SDK配置到PATH中
 
 +   下载地址
   
@@ -10,7 +10,7 @@
   
         http://www.cnblogs.com/leipei2352/archive/2011/08/01/2124333.html
 
-反向工程工具apktool
+1.2 反向工程工具apktool
 
 +   下载地址
 
@@ -27,7 +27,7 @@
 
 <b>二、反编译过程</b>
 
-导入框架
+2.1 导入框架
 
 +   Windows
 
@@ -39,7 +39,7 @@
         ./apktool if framework-res.apk
         ./apktool if com.htc.resources.apk
 
-反编译
+2.2 反编译
 
 +   Windows
 
@@ -49,7 +49,7 @@
 
         ./apktool d basicutilTester.apk
 
-结果分析
+2.3 结果分析
 
 +   在当前目录下会出现目录名称为basicutilTester的目录，点击进入后，会看到文件列表，如图1所示
 
@@ -62,7 +62,7 @@
     +   AndroidManifest.xml，配置文件
     +   apktool.yml，apktool
 
-添加代码
+2.4 添加代码
 
 +   通过AndroidManifest.xml找到入口Activity，如图2所示
 
@@ -112,7 +112,7 @@
         <uses-permission android:name="android.permission.INTERNET" />
         <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-编译
+2.5 编译
 
 +   Windows
 
@@ -122,6 +122,6 @@
 
         ./apktool b basicutilTester(这个是目录的名称)
         
-找到编译好的APK文件
+2.6 找到编译好的APK文件
 
 +   进入到basicutilTester目录的dist子目录中，会找到编译好的apk文件
