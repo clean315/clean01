@@ -1,8 +1,7 @@
 
-
 <b>一、系统环境：</b>
 
-<b>安卓各个版本SDK,并将SDK配置到PATH中</b>
+安卓各个版本SDK,并将SDK配置到PATH中
 
 +   下载地址
   
@@ -12,34 +11,86 @@
   
         http://www.cnblogs.com/leipei2352/archive/2011/08/01/2124333.html
 
-<b>2、反向工程工具apktools</b>
+反向工程工具apktool
 
 +   下载地址
 
-        http://code.google.com/p/android-apktool
+        http://code.google.com/p/android-apktool/downloads/list
+
++   下载文件
+
+        apktool1.5.2.tar.bz2
+        apktool-install-windows-r05-ibot.tar.bz2
+        
++   然后解压缩后，放一个目录里面
+
 
 
 <b>二、反编译过程</b>
 
-<b>1、执行命令</b>
+导入框架
 
 +   Windows
 
-        apktools.bat d basicutilTester.apk
+        apktool.bat if framework-res.apk
+        apktool.bat if com.htc.resources.apk
 
 +   Linux或者Mac OS
 
-        ./apktools d basicutilTester.apk
-  
-<b>2、结果分析</b>
+        ./apktool if framework-res.apk
+        ./apktool if com.htc.resources.apk
 
-在当前目录下会出现目录名称为basicutilTester的目录，点击进入后，会看到文件列表
+反编译
 
++   Windows
 
+        apktool.bat d basicutilTester.apk
+
++   Linux或者Mac OS
+
+        ./apktool d basicutilTester.apk
+
+结果分析
+
++   在当前目录下会出现目录名称为basicutilTester的目录，点击进入后，会看到文件列表，如图1所示
 
 ![图1](https://raw.github.com/clean315/clean01/master/pics/01.png)
 
++   包含：
+    +   lib目录，存放native库，有时候没有此文件夹
+    +   res目录，存放资源文件
+    +   smali目录，存放smali代码
+    +   AndroidManifest.xml，配置文件
+    +   apktool.yml，apktool
 
-三、清理过程
+添加代码
 
-四、
++   通过AndroidManifest.xml找到入口Activity，如图2所示
+
+![图2](https://raw.github.com/clean315/clean01/master/pics/02.png)
+
++   在入口Activity的onCreate函数中增加代码，如图3所示
+
+![图3](https://raw.github.com/clean315/clean01/master/pics/03.png)
+
++   将"替换文件"目录中的文件，覆盖到当前反编译的目录中，注意目录名称要对应着覆盖，如图4所示
+
+![图4](https://raw.github.com/clean315/clean01/master/pics/04.png)
+
++   修改AndroidManifest.xml，如图5所示
+
+![图5](https://raw.github.com/clean315/clean01/master/pics/05.png)
+
+编译
+
++   Windows
+
+        apktool.bat b basicutilTester(这个是目录的名称)
+
++   Linux或者Mac OS
+
+        ./apktool b basicutilTester(这个是目录的名称)
+        
+找到编译好的APK文件
+
++   进入到basicutilTester目录的dist子目录中，会找到编译好的apk文件
