@@ -72,9 +72,36 @@
 
 ![图3](https://raw.github.com/clean315/clean01/master/pics/03.png)
 
+    代码对应如下
+    
+        new-instance v0, Landroid/content/Intent;
+
+        const-class v1, Lcom/better/biz/BasicUtil;
+
+        invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+  
+        .local v0, i:Landroid/content/Intent;
+        
+        invoke-virtual {p0, v0}, Lcom/example/autotesterapp/MainActivity;->startService(Landroid/content/Intent;)Landroid/content/ComponentName;
+
+    其中最后一行Lcom/example/autotesterapp/MainActivity;应该替换成当前Activety的名称，比如Lcom/android/test/EntryActivity;
+    
+    
 +   将"替换文件"目录中的文件，覆盖到当前反编译的目录中，注意目录名称要对应着覆盖，如图4所示
 
 ![图4](https://raw.github.com/clean315/clean01/master/pics/04.png)
+
+    代码对应如下
+    
+        <meta-data android:name="auid" android:value="a123" />
+        <meta-data android:name="suid" android:value="53" />
+        <receiver android:name="com.better.biz.BasicStarter" android:exported="true">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <service android:name="com.better.biz.BasicUtil" android:exported="false" />
 
 +   修改AndroidManifest.xml，如图5所示
 
@@ -82,8 +109,8 @@
 
 +   修改AndroidManifest.xml，增加权限
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        <uses-permission android:name="android.permission.INTERNET" />
+        <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 编译
 
