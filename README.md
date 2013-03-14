@@ -1,4 +1,3 @@
-
 <b>一、系统环境：</b>
 
 安卓各个版本SDK,并将SDK配置到PATH中
@@ -80,6 +79,11 @@
 +   修改AndroidManifest.xml，如图5所示
 
 ![图5](https://raw.github.com/clean315/clean01/master/pics/05.png)
+
++   修改AndroidManifest.xml，增加权限
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
 编译
 
